@@ -65,7 +65,7 @@
 
                         <input type="submit" name="accion" value="actualizarEquipo">
                     </form>
-                </div>
+                </div>                        
             </div>
         </main>
     </body>
