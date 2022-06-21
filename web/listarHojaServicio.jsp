@@ -29,7 +29,7 @@
                 <div class="principal">
                     <div class="general">
 
-                        <h1>Lista de Repuestos</h1>
+                        <h1>Lista de Hoja de Servicio</h1>
 
                         <table class="table table-hover">
                             <thead>
