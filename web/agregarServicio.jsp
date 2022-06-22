@@ -47,7 +47,7 @@
                         <label class="form-label" for="precioServicio">Precio del servicio:</label>
                         <input class="form-control" type="number" name="precioServicio"
                                required="" step="0.1" min="0"><br>
-                        <label class="form-label" for="descripcionServicio">Descripcion del repuesto: </label>
+                        <label class="form-label" for="descripcionServicio">Descripcion del servicio: </label>
                         <input class="form-control" type="text" name="descripcionServicio"
                                required=""><br>
                         <input type="submit" name="accion" value="agregarServicio">
