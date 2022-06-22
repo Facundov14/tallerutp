@@ -29,6 +29,7 @@ public class ControladorAdmin extends HttpServlet {
     UsuarioDAO usuarioDAO = new UsuarioDAO();
     TecnicoDAO tecnicoDAO = new TecnicoDAO();
     RepuestoDAO repuestoDAO = new RepuestoDAO();
+    ServicioDAO servicioDAO = new ServicioDAO();
     HojaServicioDAO hojaServicioDAO = new HojaServicioDAO();
     int codigoTecnico = 0;
     
@@ -330,6 +331,47 @@ public class ControladorAdmin extends HttpServlet {
                 request.getRequestDispatcher("inicioAdmin.jsp").forward(request, response);
                 
                 break;
+            //P.5 CRUD SERVICIOS    
+            case "listarServicios":
+                List<Servicio> listaServicios = servicioDAO.listarServicios();
+                
+                sesion.setAttribute("listaServicios", listaServicios);
+                request.getRequestDispatcher("listarServicios.jsp").forward(request, response);
+            break;
+            
+            case "modificarServicio":
+                int codigoServicio = Integer.parseInt(request.getParameter("codigoServicio"));
+                Servicio servicio = new Servicio();
+                servicio = servicioDAO.obtenerServicio(codigoServicio);
+                
+                sesion.setAttribute("servicio", servicio);
+                request.getRequestDispatcher("actualizarServicio.jsp").forward(request, response);
+            break;
+            case "agregarServicio":
+                String nombreServicio = request.getParameter("nombreServicio");
+                double precioServicio = Double.parseDouble(request.getParameter("precioServicio")); 
+                String descripcionServicio = request.getParameter("descripcionServicio");
+                
+                servicioDAO.agregarServicio(nombreServicio, precioServicio, descripcionServicio);
+                request.getRequestDispatcher("ControladorAdmin?accion=listarServicios").forward(request, response);
+            break;
+            case "actualizarServicio":
+                codigoServicio = Integer.parseInt(request.getParameter("codigoServicio"));
+                nombreServicio = request.getParameter("nombreServicio");
+                precioServicio = Double.parseDouble(request.getParameter("precioServicio"));
+                descripcionServicio = request.getParameter("descripcionServicio");
+                
+                servicioDAO.actualizarServicio(codigoServicio, nombreServicio, precioServicio,descripcionServicio);
+                
+                request.getRequestDispatcher("ControladorAdmin?accion=listarServicios").forward(request, response);
+            break;
+            case "eliminarServicio":
+                codigoServicio = Integer.parseInt(request.getParameter("codigoServicio"));
+                
+                servicioDAO.eliminarServicio(codigoServicio);
+                
+                request.getRequestDispatcher("ControladorAdmin?accion=listarServicios").forward(request, response);
+            break;
         }
     }
     

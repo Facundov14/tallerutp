@@ -63,5 +63,46 @@ public class ServicioDAO {
         
         return servicio;
     }
+    public void actualizarServicio(int codigoServicio, String nombreServicio, double precioServicio, String descripcionServicio){
+        
+        /* String sql = "UPDATE repuestos SET nombreRepuesto='"+nombreRepuesto+"', Desc_Rep='"+descripcionRepuesto+"',"
+                + " Precio="+precioRepuesto+", Stock="+stockRepuesto+" where Cod_Rep="+codigoRepuesto;*/
+        String sql = "UPDATE servicio SET NombreServicio='"+nombreServicio+"', Precio="+precioServicio+","
+                + " Descripcion='"+descripcionServicio+"' where Cod_Serv="+codigoServicio;
+        try {
+            con = cn.getConnection();           
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+            
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void agregarServicio(String nombreServicio, double precioServicio, String descripcionServicio){
+        String sql = "insert into servicio(nombreServicio, Precio, Descripcion)values(?,?,?)";
+         try{
+            con = cn.getConnection(); 
+            ps = con.prepareStatement(sql); 
+            //LLENAR PREPARED STATEMENT
+            ps.setString(1, nombreServicio);
+            ps.setDouble(2, precioServicio);
+            ps.setString(3, descripcionServicio);    
+            ps.executeUpdate();
+         }catch(Exception e){
+             e.printStackTrace();
+         }
+    }
     
+    public void eliminarServicio(int codigoServicio){
+        String sql = "DELETE FROM servicio WHERE Cod_Serv="+codigoServicio;
+        
+        try {
+            con = cn.getConnection();           
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+            
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

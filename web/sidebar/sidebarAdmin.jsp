@@ -40,6 +40,14 @@
                             <li><a href="ControladorAdmin?accion=listarHojasServicio&estadoHojaServicio=1"><i class="fas fa-list-ul"></i> Hojas de servicio</a></li>
                         </ul>
                     </div>
+                    <div>
+                        <p>SERVICIOS</p>
+                        <ul class="hojas-opciones">
+                            <li><a href="agregarServicio.jsp"><i class="fas fa-plus"></i>Agregar un Servicio</a></li>
+                            <li><a href="ControladorAdmin?accion=listarServicios"><i class="fas fa-list-ul"></i>Listar Servicios</a></li>
+                            
+                        </ul>
+                    </div>
                 </div>
             </div>
             <a href="ControladorSesion?accion=cerrarSesion" class="boton-cerrar-sesion">
