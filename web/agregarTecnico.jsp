@@ -52,21 +52,21 @@
 
                     <form action="ControladorAdmin">
                         <label class="form-label" for="codigoPersona">Ingrese su DNI</label>
-                        <input class="form-control" type="text" name="codigoPersona">
+                        <input class="form-control" type="text" name="codigoPersona" minlength="8" maxlength="8" required pattern="[0-9]+">
                         <label class="form-label" for="password">Ingrese su Contraseña</label>
-                        <input class="form-control" type="password" name="password">    
+                        <input class="form-control" type="password" name="password" required>    
                         <label class="form-label" for="">Nombre</label>
-                        <input class="form-control" type="text" placeholder="Nombre" name="nombre"> 
+                        <input class="form-control" type="text" placeholder="Nombre" name="nombre" required pattern="[A-Za-z]+"> 
                         <label class="form-label" for="">Apellido Paterno</label>
-                        <input class="form-control" type="text" placeholder="Apellido" name="apellidoPaterno"> 
+                        <input class="form-control" type="text" placeholder="Apellido" name="apellidoPaterno" required pattern="[A-Za-z]+"> 
                         <label class="form-label" for="">Apellido Materno</label>
-                        <input class="form-control" type="text" placeholder="Apellido" name="apellidoMaterno"> 
+                        <input class="form-control" type="text" placeholder="Apellido" name="apellidoMaterno" required pattern="[A-Za-z]+"> 
                         <label class="form-label" for="">Telefono</label>
-                        <input class="form-control" type="text" placeholder="968034586" name="telefono"> 
+                        <input class="form-control" type="text" placeholder="968034586" name="telefono" minlength="9" maxlength="9" required pattern="[0-9]+"> 
                         <label class="form-label" for="">Correo</label>
-                        <input class="form-control" type="text" placeholder="alguien@algomail.com" name="correo"> 
+                        <input class="form-control" type="email" placeholder="alguien@algomail.com" name="correo" required> 
                         <label class="form-label" for="">Direccion</label>
-                        <input class="form-control" type="text" placeholder="Direccion" name="direccion"> 
+                        <input class="form-control" type="text" placeholder="Direccion" name="direccion" required> 
                         <label class="form-label" for="distrito">Distrito</label>
                         <select class="form-select" name="distrito" id="">
                             <option value="1">Cerro Colorado</option>                                  

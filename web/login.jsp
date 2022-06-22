@@ -16,7 +16,7 @@
             <h1 class="titulo">Iniciar Sesion</h1>
             <form action="ControladorSesion" class="login-card">
                 <label class="label" for="usuario">Ingresa tu usuario</label>
-                <input class="input" type="text" name="usuario" required="">
+                <input class="input" type="text" name="usuario" required="" pattern="[0-9]+">
         
                 <label class="label" for="password">Ingrese su contraseña</label>
                 <input class="input" type="password" name="password" required="">
