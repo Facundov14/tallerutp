@@ -12,10 +12,8 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Universidad/NetBeansProjects/tallerutpiv/NuevoTallerUTP/src/java/DAO/ServicioDAO.java</file>
-            <file>file:/D:/Universidad/NetBeansProjects/tallerutpiv/NuevoTallerUTP/web/listarServicios.jsp</file>
-            <file>file:/D:/Universidad/NetBeansProjects/tallerutpiv/NuevoTallerUTP/src/java/DAO/RepuestoDAO.java</file>
-            <file>file:/D:/Universidad/NetBeansProjects/tallerutpiv/NuevoTallerUTP/src/java/Controlador/ControladorAdmin.java</file>
+            <file>file:/D:/Universidad/Integrador/TALLERUTPFINAL/tallerutp/web/actualizarServicio.jsp</file>
+            <file>file:/D:/Universidad/Integrador/TALLERUTPFINAL/tallerutp/web/agregarServicio.jsp</file>
             <file>file:/D:/Universidad/Integrador/TALLERUTPFINAL/tallerutp/web/agregarTecnico.jsp</file>
         </group>
     </open-files>

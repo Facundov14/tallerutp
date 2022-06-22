@@ -43,7 +43,7 @@
                         
                         <label class="form-label" for="nombreServicio">Nombre del servicio: </label>
                         <input class="form-control" type="text" name="nombreServicio"
-                               required="" pattern="[A-Za-z0-9]+"><br>
+                               required="" pattern="[A-Za-z ]+"><br>
                         <label class="form-label" for="precioServicio">Precio del servicio:</label>
                         <input class="form-control" type="number" name="precioServicio"
                                required="" step="0.1" min="0"><br>
