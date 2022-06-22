@@ -91,7 +91,7 @@
                         <div class="formulario-derecha">
                             <form action="ControladorAdmin">
                                 <label class="form-label" for="precioVisita">Ingresa el monto de la visita:</label>
-                                <input class="form-control" type="number" step="0.1" name="precioVisita">
+                                <input class="form-control" type="number" step="0.1" name="precioVisita" pattern="[0-9]+">
                                 
                                 <input type="hidden" name="codigoHojaServicio" value="${codigoHojaServicio}">
 

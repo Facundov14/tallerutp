@@ -71,22 +71,22 @@
             <div class="columnas">
                 <div class="columna">
                     <label class="form-label" for="codigoPersona">Ingrese su DNI</label>
-                    <input class="form-control" type="text" name="codigoPersona" /><br />
+                    <input class="form-control" type="text" name="codigoPersona" required="" pattern="[0-9]+" /><br />
                     <label class="form-label" for="password">Ingrese su Contraseña</label>
-                    <input class="form-control" type="password" name="password" /><br />
+                    <input class="form-control" type="password" name="password" required="" /><br />
                     <label class="form-label" for="nombre">Ingrese su Nombre</label>
-                    <input class="form-control" type="text" name="nombre" /><br />
+                    <input class="form-control" type="text" name="nombre" required="" pattern="[A-Za-z]+" /><br />
                     <label class="form-label" for="apellidoPaterno">Ingrese su Apellido Paterno</label>
-                    <input class="form-control" type="text" name="apellidoPaterno" /><br />
+                    <input class="form-control" type="text" name="apellidoPaterno" required="" pattern="[A-Za-z]+"/><br />
                 </div>
     
                 <div class="columna">
                     <label class="form-label" for="apellidoMaterno">Ingrese su Apellido Materno</label>
-                    <input class="form-control" type="text" name="apellidoMaterno" /><br />
+                    <input class="form-control" type="text" name="apellidoMaterno" required="" pattern="[A-Za-z]+" /><br />
                     <label class="form-label" for="telefono">Ingrese su Telefono</label>
-                    <input class="form-control" type="text" name="telefono" /><br />
+                    <input class="form-control" type="text" name="telefono" required="" pattern="[0-9]+"/><br />
                     <label class="form-label" for="correo">Ingrese su Correo</label>
-                    <input class="form-control" type="text" name="correo" /><br />
+                    <input class="form-control" type="email" name="correo" required=""/><br />
                     <label class="form-label" for="direccion">Ingrese su Direccion</label>
                     <input class="form-control" type="text" name="direccion" /><br />
                     <label class="form-label" for="distrito">Seleccione su distrito:</label>
