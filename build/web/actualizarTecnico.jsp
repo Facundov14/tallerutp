@@ -50,19 +50,26 @@
                         <label class="form-label" for="codigoPersona">Ingrese su DNI</label>
                         <input class="form-control" type="text" name="codigoPersona" readonly="readonly" value="${usuario.getPersona().getCodigoPersona()}"><br>
                         <label class="form-label" for="password">Ingrese su Contraseña</label>
-                        <input class="form-control" type="password" name="password" value="${usuario.getPassword()}"><br>
+                        <input class="form-control" type="password" name="password" value="${usuario.getPassword()}"
+                               required=""><br>
                         <label class="form-label" for="nombre">Ingrese su Nombre</label>
-                        <input class="form-control" type="text" name="nombre" value="${usuario.getPersona().getNombre()}"><br>
+                        <input class="form-control" type="text" name="nombre" value="${usuario.getPersona().getNombre()}"
+                               required="" pattern="[A-Za-z]+"><br>
                         <label class="form-label" for="apellidoPaterno">Ingrese su Apellido Paterno</label>
-                        <input class="form-control" type="text" name="apellidoPaterno" value="${usuario.getPersona().getApellidoPaterno()}"><br>
+                        <input class="form-control" type="text" name="apellidoPaterno" value="${usuario.getPersona().getApellidoPaterno()}"
+                               required="" pattern="[A-Za-z]+"><br>
                         <label class="form-label" for="apellidoMaterno">Ingrese su Apellido Materno</label>
-                        <input class="form-control" type="text" name="apellidoMaterno" value="${usuario.getPersona().getApellidoMaterno()}"><br>
+                        <input class="form-control" type="text" name="apellidoMaterno" value="${usuario.getPersona().getApellidoMaterno()}"
+                               required="" pattern="[A-Za-z]+"><br>
                         <label class="form-label" for="telefono">Ingrese su Telefono</label>
-                        <input class="form-control" type="text" name="telefono" value="${usuario.getPersona().getTelefono()}"><br>
+                        <input class="form-control" type="text" name="telefono" value="${usuario.getPersona().getTelefono()}"
+                               required="" pattern="[0-9]+" minlength="9" maxlength="9"><br>
                         <label class="form-label" for="correo">Ingrese su Correo</label>
-                        <input class="form-control" type="text" name="correo" value="${usuario.getPersona().getCorreo()}"><br>
+                        <input class="form-control" type="email" name="correo" value="${usuario.getPersona().getCorreo()}"
+                               required=""><br>
                         <label class="form-label" for="direccion">Ingrese su Direccion</label>
-                        <input class="form-control" type="text" name="direccion" value="${usuario.getPersona().getDireccion().getDescripcionDireccion()}"><br>
+                        <input class="form-control" type="text" name="direccion" value="${usuario.getPersona().getDireccion().getDescripcionDireccion()}"
+                               required=""><br>
                         <label class="form-label" for="distrito">Seleccione su distrito:</label>
                         <select class="form-select" name="distrito" >
                             <option value="1">Cerro Colorado</option>

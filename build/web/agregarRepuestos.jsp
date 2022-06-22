@@ -42,13 +42,17 @@
                     <form class="formulario" action="ControladorAdmin">
                         
                         <label class="form-label" for="nombreRepuesto">Nombre del repuesto: </label>
-                        <input class="form-control" type="text" name="nombreRepuesto"><br>
+                        <input class="form-control" type="text" name="nombreRepuesto"
+                               required="" pattern="[A-Za-z0-9]+"><br>
                         <label class="form-label" for="descripcionRepuesto">Descripcion del repuesto: </label>
-                        <input class="form-control" type="text" name="descripcionRepuesto"><br>
+                        <input class="form-control" type="text" name="descripcionRepuesto"
+                               required="" pattern="[A-Za-z0-9]+"><br>
                         <label class="form-label" for="precioRepuesto">Precio del repuesto: </label>
-                        <input class="form-control" type="number" name="precioRepuesto"><br>
+                        <input class="form-control" type="number" name="precioRepuesto"
+                               required="" step="0.1" min="0"><br>
                         <label class="form-label" for="stockRepuesto">Stock del repuesto: </label>
-                        <input class="form-control" type="number" name="stockRepuesto"><br>
+                        <input class="form-control" type="number" name="stockRepuesto"
+                               required="" min="1" step="1"><br>
                         
                         <input type="submit" name="accion" value="agregarRepuesto">
                     </form>

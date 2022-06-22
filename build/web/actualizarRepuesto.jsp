@@ -42,13 +42,17 @@
                         <label class="form-label" for="codigoRepuesto">Codigo del repuesto: </label>
                         <input class="form-control" type="text" name="codigoRepuesto" readonly="readonly" value="${repuesto.getCodigoRepuesto()}"><br>
                         <label class="form-label" for="nombreRepuesto">Nombre del repuesto: </label>
-                        <input class="form-control" type="text" name="nombreRepuesto" value="${repuesto.getNombreRepuesto()}"><br>
+                        <input class="form-control" type="text" name="nombreRepuesto" value="${repuesto.getNombreRepuesto()}"
+                               required="" pattern="[A-Za-z0-9]+"><br>
                         <label class="form-label" for="descripcionRepuesto">Descripcion del repuesto: </label>
-                        <input class="form-control" type="text" name="descripcionRepuesto" value="${repuesto.getDescripcionRepuesto()}"><br>
+                        <input class="form-control" type="text" name="descripcionRepuesto" value="${repuesto.getDescripcionRepuesto()}"
+                               required="" pattern="[A-Za-z0-9]+"><br>
                         <label class="form-label" for="precioRepuesto">Precio del repuesto: </label>
-                        <input class="form-control" type="number" name="precioRepuesto" value="${repuesto.getPrecioRepuesto()}"><br>
+                        <input class="form-control" type="number" name="precioRepuesto" value="${repuesto.getPrecioRepuesto()}"
+                               required="" step="0.1" min="0"><br>
                         <label class="form-label" for="stockRepuesto">Stock del repuesto: </label>
-                        <input class="form-control" type="number" name="stockRepuesto" value="${repuesto.getStockRepuesto()}"><br>
+                        <input class="form-control" type="number" name="stockRepuesto" value="${repuesto.getStockRepuesto()}"
+                               required="" min="1" step="1"><br>
                         <input class="form-control" type="submit" name="accion" value="actualizarRepuesto">
                     </form>
                 </div>
