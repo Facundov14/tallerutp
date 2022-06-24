@@ -19,6 +19,21 @@
         <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="./css/sidebar.css">
+        <style>
+            .cabecera {
+                display : flex;
+                justify-content: space-between;
+            }
+            .cabecera form {
+                width: 25%;
+                display : flex;
+                justify-content: space-between;
+            }
+            .cabecera form select {
+                font-size: 1.6rem;
+                margin-right: 1rem;
+            }
+        </style>
     </head>
     <body>
         <main class="contenido">
@@ -28,8 +43,17 @@
 
                 <div class="principal">
                     <div class="general">
-
-                        <h1>Lista de Hojas de Servicio Administrador</h1>
+                        <div class="cabecera">
+                            <h1>Lista de Hojas de Servicio Administrador</h1>
+                            <form action="ControladorAdmin">
+                                <select name="codigoEstado" class="form-select">
+                                    <option value="1">Pendientes</option>
+                                    <option value="2">Verificados</option>
+                                    <option value="3">Finalizados</option>
+                                </select>
+                                <input type="submit" name="accion" value="Filtrar">
+                            </form>
+                        </div>
 
                         <table class="table table-hover">
                             <thead>

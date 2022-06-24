@@ -29,10 +29,14 @@
             }
             .general {
                 width:95%;
+                display : flex;
+                flex-direction: column;
+                align-items: center;
             }
             .informacion {
                 width: 100%;
                 display : flex;
+                justify-content: center;
                 gap : 3rem;
             }
             .formulario-derecha{
@@ -40,7 +44,17 @@
                 margin-top: 3rem;
                 border-radius: 1rem;
                 outline : 1px solid #cecece;
+                gap : 2rem;
             }
+            .formulario-derecha input {
+                margin-bottom: 2rem;
+                text-align: center;
+            }
+            .boton {
+                display : block;
+                margin : auto;
+            }
+            /*
             .formulario-derecha textarea{
                 resize: none;
             }
@@ -49,7 +63,7 @@
             }
             form input:last-child{
                 margin-top:3rem;
-            }
+            }*/
         </style>
     </head>
     <body>
@@ -62,9 +76,10 @@
                 <div class="principal">
                     <div class="general">
 
-                        <h1>Detalles</h1>
+                        <h1>Procesar solicitud de servicio</h1>
 
                         <div class="informacion">
+                            <!--
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -86,16 +101,19 @@
                                         <td>${repuesto.getStockRepuesto() }</td>
                                     </tr>
                                 </c:forEach>
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>-->
                         <div class="formulario-derecha">
                             <form action="ControladorAdmin">
-                                <label class="form-label" for="precioVisita">Ingresa el monto de la visita:</label>
-                                <input class="form-control" type="number" step="0.1" name="precioVisita" pattern="[0-9]+">
+                                <label class="form-label" for="fechaHojaServicio">Ingresa la fecha</label>
+                                <input class="form-control" type="date" name="fechaHojaServicio">
                                 
+                                <label class="form-label" for="horaHojaServicio">Ingresa la hora</label>
+                                <input class="form-control" type="time" name="horaHojaServicio">
+                                                                
                                 <input type="hidden" name="codigoHojaServicio" value="${codigoHojaServicio}">
 
-                                <input type="submit" name="accion" value="Finalizar">
+                                <input class="boton" type="submit" name="accion" value="Verificar">
                             </form>
                         </div>
                     </div>

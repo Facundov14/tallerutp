@@ -222,14 +222,7 @@ public class ControladorAdmin extends HttpServlet {
                 
                 sesion.setAttribute("listaHojaServicio", listaHojaServicio);
                 
-                switch(estadoHojaServicio){
-                    case 1:
-                        request.getRequestDispatcher("listarHojaServicioAdmin.jsp").forward(request, response);
-                        break;
-                    case 2:
-                        request.getRequestDispatcher("listarHojaServicioAdmin.jsp").forward(request, response);
-                        break;
-                }
+                request.getRequestDispatcher("listarHojaServicioAdmin.jsp").forward(request, response);
                 break;
                 
             case "agregarCantidad":
@@ -259,7 +252,7 @@ public class ControladorAdmin extends HttpServlet {
                 request.getRequestDispatcher("ControladorAdmin?accion=procesar").forward(request, response);
                 
                 break;
-                
+            /*    
             case "procesar1":
                 listaRepuestos = repuestoDAO.listarRepuestos();
                 codigoHojaServicio = Integer.parseInt(request.getParameter("codigoHojaServicio"));
@@ -279,7 +272,13 @@ public class ControladorAdmin extends HttpServlet {
                 request.getRequestDispatcher("seleccionarRepuesto.jsp").forward(request, response);
                 
                 break;
+            */
+            case "procesar":
+                codigoHojaServicio = Integer.parseInt(request.getParameter("codigoHojaServicio"));
                 
+                sesion.setAttribute("codigoHojaServicio", codigoHojaServicio);
+                request.getRequestDispatcher("procesarHojaServicio.jsp").forward(request, response);
+                break;
             case "agregarRepuestoCarrito":
                 codigoRepuesto = Integer.parseInt(request.getParameter("codigoRepuesto"));
                 Repuesto repuestoAgregado = repuestoDAO.obtenerRepuesto(codigoRepuesto);
@@ -313,7 +312,7 @@ public class ControladorAdmin extends HttpServlet {
                 sesion.setAttribute("codigoHojaServicio", codigoHojaServicio);
                 request.getRequestDispatcher("procesarHojaServicio.jsp").forward(request, response);
                 break;
-                
+            /*    
             case "Finalizar":
                 double precioVisita = Double.parseDouble(request.getParameter("precioVisita"));
                 codigoHojaServicio = Integer.parseInt(request.getParameter("codigoHojaServicio"));
@@ -328,9 +327,25 @@ public class ControladorAdmin extends HttpServlet {
                 hojaServicioDAO.asignarPresupuesto(hojaServicio.getCodigoHojaServicio(), 
                         precioVisita, totalFinal, 2);
                
-                request.getRequestDispatcher("inicioAdmin.jsp").forward(request, response);
-                
+                request.getRequestDispatcher("inicioAdmin.jsp").forward(request, response);  
                 break;
+            */
+            case "Verificar":
+                String fechaHojaServicioFinal = request.getParameter("fechaHojaServicio");
+                String horaHojaServicioFinal = request.getParameter("horaHojaServicio");
+                codigoHojaServicio = Integer.parseInt(request.getParameter("codigoHojaServicio"));
+                
+                hojaServicioDAO.verificarFechaHora(codigoHojaServicio, fechaHojaServicioFinal, horaHojaServicioFinal, 2);
+                
+                request.getRequestDispatcher("ControladorAdmin?accion=listarHojasServicio&estadoHojaServicio=1").forward(request, response);
+                break;
+                
+            case "Filtrar":
+                int codigoEstado = Integer.parseInt(request.getParameter("codigoEstado"));
+                
+                request.getRequestDispatcher("ControladorAdmin?accion=listarHojasServicio&estadoHojaServicio="+codigoEstado).forward(request, response);
+                break;
+
             //P.5 CRUD SERVICIOS    
             case "listarServicios":
                 List<Servicio> listaServicios = servicioDAO.listarServicios();

@@ -66,7 +66,7 @@
   <body>
     <main>
       <div class="contenedor">
-        <h1 class="titulo">Iniciar Sesion</h1>
+        <h1 class="titulo">Registrar</h1>
         <form action="ControladorSesion" class="registrar-card">
             <div class="columnas">
                 <div class="columna">

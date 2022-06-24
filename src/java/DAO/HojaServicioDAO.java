@@ -218,6 +218,19 @@ public class HojaServicioDAO {
         return listaEquipoCliente;
     }
 
+    //MODIFICAR FECHA Y HORA EN LA HOJA DE SERVICIO
+    public void verificarFechaHora(int codigoHojaServicio, String fechaFinal, String horaFinal, int codigoEstado){
+        String sql = "UPDATE hojaservicio SET Fecha='" + fechaFinal + "', Hora='" + horaFinal + "', Cod_EstadoHS="
+                + codigoEstado + " WHERE Cod_HS=" + codigoHojaServicio;
+        
+        try {
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (Exception e3) {
+        }
+        
+    }
+    
     public void asignarPresupuesto(int codigoHojaServicio, double precioVisita, double totalFinal, int codigoEstado) {
 
         String sql = "UPDATE hojaservicio SET PrecioVisita=" + precioVisita + ", Total=" + totalFinal + ", Cod_EstadoHS="
