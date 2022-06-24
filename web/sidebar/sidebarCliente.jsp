@@ -23,7 +23,7 @@
                     <div>
                         <p>SOBRE MI</p>
                         <ul class="hojas-opciones">
-                            <li><a href="#"><i class="fas fa-info"></i></i></i> Mi perfil</a></li>
+                            <li><a href="#"><i class="fas fa-info"></i> Mi perfil</a></li>
                         </ul>
                     </div>
                     <div>

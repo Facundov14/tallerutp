@@ -1,8 +1,4 @@
-<%-- 
-    Document   : procesoServicio2
-    Created on : 10 jun. 2022, 15:37:43
-    Author     : Jose
---%>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -61,13 +57,13 @@
     <body>
         <main class="contenido">
             <div class="sidebar1">
-                <jsp:include page="../sidebar/sidebarCliente.jsp"></jsp:include>
+                <jsp:include page="../sidebar/sidebarTecnico.jsp"></jsp:include>
             </div>
 
             <div class="principal">
                 <h1>Elija el servicio</h1>
                 
-                <form action="ControladorCliente">
+                    <form action="ControladorTecnico">
                     <div class="general">    
                         <c:forEach var="servicio" items="${listaServicios}">
                             <div class="card" style="width: 18rem;">
@@ -80,13 +76,14 @@
                                     <p class="card-text">${servicio.getPrecioServicio()}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <a href="ControladorCliente?accion=agregarServicioCarrito&codigoServicio=${servicio.getCodigoServicio()}" class="btn btn-primary">Agregar</a>
-                                    <a href="ControladorCliente?accion=eliminarServicioCarrito&codigoServicio=${servicio.getCodigoServicio()}" class="btn btn-danger">Quitar</a>
+                                    <a href="ControladorTecnico?accion=agregarServicioCarrito&codigoServicio=${servicio.getCodigoServicio()}&codigoHojaServicio=${codigoHojaServicio}" class="btn btn-primary">Agregar</a>
+                                    <a href="ControladorTecnico?accion=eliminarServicioCarrito&codigoServicio=${servicio.getCodigoServicio()}&codigoHojaServicio=${codigoHojaServicio}" class="btn btn-danger">Quitar</a>
                                 </div>
                             </div>
                         </c:forEach>
                     </div>
-                    <input type="hidden" name="codigoEquipo" value="${codigoEquipo}">
+                    <input type="hidden" name="codigoHojaServicio" value="${codigoHojaServicio}">
+                    
                     
                     <<input type="submit" name="accion" value="Continuar">
                 </form>

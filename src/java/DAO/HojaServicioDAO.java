@@ -162,6 +162,29 @@ public class HojaServicioDAO {
 
         return listaHojaServicio;
     }
+    public List listarHojaServicioTecnico(int codigoEstadoHojaServicio, int codigoTecnico){
+        
+        List<HojaServicio> listaHojaServicioTecnico = new ArrayList<>();
+        List<Integer> listaCodigoHojaServicio = new ArrayList<>();
+        
+        String sql = "select * from hojaservicio where Cod_Usuario=" +codigoTecnico+" and Cod_EstadoHS="+codigoEstadoHojaServicio;
+        try {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    listaCodigoHojaServicio.add(rs.getInt("Cod_HS"));
+                }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        for (int codigo : listaCodigoHojaServicio) {
+                    listaHojaServicioTecnico.add(this.obtenerHojaServicio(codigo));
+                }
+        
+        return listaHojaServicioTecnico;
+    }
     public List listarHojaServicioCliente(int codigoEstadoHojaServicio, int codigoCliente) {
 
         List<Integer> listaCodigoHojaServicio = new ArrayList<>();
@@ -217,6 +240,15 @@ public class HojaServicioDAO {
         }
         return listaEquipoCliente;
     }
+    //***********METODO PARA FINALIZAR ATENCION TECNICO**********************
+    public void finalizarAtencionTecnico(int codigoHojaServicio, double precioVisita, double totalFinal, int codigoEstado,
+            List<Servicio> carritoServicios, List<Repuesto> carritoRepuestos){
+        
+        this.asignarPresupuesto(codigoHojaServicio, precioVisita, totalFinal, codigoEstado);
+        this.serviciosbrindados(carritoServicios, codigoHojaServicio);
+        
+    }
+    //***********MODIFICA TABLA HOJA SERVICIO********************************
 
     //MODIFICAR FECHA Y HORA EN LA HOJA DE SERVICIO
     public void verificarFechaHora(int codigoHojaServicio, String fechaFinal, String horaFinal, int codigoEstado){
@@ -231,7 +263,7 @@ public class HojaServicioDAO {
         
     }
     
-    public void asignarPresupuesto(int codigoHojaServicio, double precioVisita, double totalFinal, int codigoEstado) {
+    private void asignarPresupuesto(int codigoHojaServicio, double precioVisita, double totalFinal, int codigoEstado) {
 
         String sql = "UPDATE hojaservicio SET PrecioVisita=" + precioVisita + ", Total=" + totalFinal + ", Cod_EstadoHS="
                 + codigoEstado + " WHERE Cod_HS=" + codigoHojaServicio;
@@ -241,6 +273,43 @@ public class HojaServicioDAO {
         } catch (Exception e3) {
         }
     }
+    //************MODIFICA TABLA SERVICIOSBRINDADOS************************
+    private void serviciosbrindados(List<Servicio> carritoServicios, int codigoHojaServicio){
+        
+        try{
+            String sql = "insert into serviciosbrindados(Cod_Serv,Cod_HS,Precio)values(?,?,?)";
+            for (Servicio servicio : carritoServicios) {
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.setInt(1, servicio.getCodigoServicio());
+                ps.setInt(2, codigoHojaServicio);
+                ps.setDouble(3, servicio.getPrecioServicio());
+                ps.executeUpdate();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+    }
+    
+    public void repuestosHojaServicio(List<Repuesto> carritoRepuestos, int codigoHojaServicio){
+        try{
+            String sql = "insert into hs_rep(Cod_HS,Cod_Rep,Cantidad,Subtotal)values(?,?,?,?)";
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            for (Repuesto repuesto : carritoRepuestos) {
+         
+                ps = con.prepareStatement(sql);
+                ps.setInt(1, codigoHojaServicio);
+                ps.setInt(2, repuesto.getCodigoRepuesto());
+                ps.setDouble(3, codigoHojaServicio/*MOMENTANEO*/);
+                ps.executeUpdate();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
     
     public void actualizarTotal(int codigoHojaServicio, double subtotal) {
 
