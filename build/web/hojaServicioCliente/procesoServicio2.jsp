@@ -65,7 +65,7 @@
             </div>
 
             <div class="principal">
-                <h1>Elija el equipo</h1>
+                <h1>Elija el servicio</h1>
                 
                 <form action="ControladorCliente">
                     <div class="general">    

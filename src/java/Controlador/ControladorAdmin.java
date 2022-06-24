@@ -314,7 +314,7 @@ public class ControladorAdmin extends HttpServlet {
                 request.getRequestDispatcher("procesarHojaServicio.jsp").forward(request, response);
                 break;
                 
-            case "Finalizar":
+            /*case "Finalizar":
                 double precioVisita = Double.parseDouble(request.getParameter("precioVisita"));
                 codigoHojaServicio = Integer.parseInt(request.getParameter("codigoHojaServicio"));
                 double precioRepuestos = 0;
@@ -330,7 +330,7 @@ public class ControladorAdmin extends HttpServlet {
                
                 request.getRequestDispatcher("inicioAdmin.jsp").forward(request, response);
                 
-                break;
+                break;*/
             //P.5 CRUD SERVICIOS    
             case "listarServicios":
                 List<Servicio> listaServicios = servicioDAO.listarServicios();

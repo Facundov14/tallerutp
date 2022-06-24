@@ -23,7 +23,7 @@
                     <div>
                         <p>HOJAS DE SERVICIO</p>
                         <ul class="hojas-opciones">
-                            <li><a href="#"><i class="fas fa-list-ul"></i> Hojas de servicio</a></li>
+                            <li><a href="ControladorTecnico?accion=listarHojasServicioPendientes&Cod_EstadoHS=2&codigoUsuario=${usuario.getCodigoUsuario()}"><i class="fas fa-list-ul"></i>Pendientes</a></li>
                         </ul>
                     </div>
                     <div>
