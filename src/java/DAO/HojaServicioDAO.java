@@ -242,10 +242,11 @@ public class HojaServicioDAO {
     }
     //***********METODO PARA FINALIZAR ATENCION TECNICO**********************
     public void finalizarAtencionTecnico(int codigoHojaServicio, double precioVisita, double totalFinal, int codigoEstado,
-            List<Servicio> carritoServicios, List<Repuesto> carritoRepuestos){
+            List<Servicio> carritoServicios, List<CarritoRepuesto> carritoRepuestos){
         
         this.asignarPresupuesto(codigoHojaServicio, precioVisita, totalFinal, codigoEstado);
         this.serviciosbrindados(carritoServicios, codigoHojaServicio);
+        this.repuestosHojaServicio(carritoRepuestos, codigoHojaServicio);
         
     }
     //***********MODIFICA TABLA HOJA SERVICIO********************************
@@ -292,17 +293,18 @@ public class HojaServicioDAO {
         
     }
     
-    public void repuestosHojaServicio(List<Repuesto> carritoRepuestos, int codigoHojaServicio){
+    public void repuestosHojaServicio(List<CarritoRepuesto> carritoRepuestos, int codigoHojaServicio){
         try{
             String sql = "insert into hs_rep(Cod_HS,Cod_Rep,Cantidad,Subtotal)values(?,?,?,?)";
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
-            for (Repuesto repuesto : carritoRepuestos) {
+            for (CarritoRepuesto repuesto : carritoRepuestos) {
          
                 ps = con.prepareStatement(sql);
                 ps.setInt(1, codigoHojaServicio);
-                ps.setInt(2, repuesto.getCodigoRepuesto());
-                ps.setDouble(3, codigoHojaServicio/*MOMENTANEO*/);
+                ps.setInt(2, repuesto.getRepuesto().getCodigoRepuesto());
+                ps.setInt(3, repuesto.getCantidad());
+                ps.setDouble(4, repuesto.getRepuesto().getPrecioRepuesto());
                 ps.executeUpdate();
             }
         }catch(Exception e){

@@ -66,7 +66,7 @@ public class ControladorTecnico extends HttpServlet {
     }
     
     List<Servicio> carritoServicios = new ArrayList<>();
-    List<Repuesto> carritoRepuestos = new ArrayList<>();
+    List<CarritoRepuesto> carritoRepuestos = new ArrayList<>();
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -131,10 +131,24 @@ public class ControladorTecnico extends HttpServlet {
                 
             break;
             case "agregarRepuestoCarrito":
+                CarritoRepuesto carritoRepuesto = new CarritoRepuesto();
+                String contiene = "no";
                 codigoHojaServicio = Integer.parseInt(request.getParameter("codigoHojaServicio"));
                 int codigoRepuesto = Integer.parseInt(request.getParameter("codigoRepuesto"));
                 Repuesto repuestoAgregado = repuestoDAO.obtenerRepuesto(codigoRepuesto);
-                carritoRepuestos.add(repuestoAgregado);
+                for(CarritoRepuesto repuesto : carritoRepuestos){
+                    if(repuesto.getRepuesto().getCodigoRepuesto() == repuestoAgregado.getCodigoRepuesto()){
+                        repuesto.setCantidad(repuesto.getCantidad()+1);
+                        repuesto.getRepuesto().setPrecioRepuesto(repuesto.getRepuesto().getPrecioRepuesto() + repuestoAgregado.getPrecioRepuesto());
+                        contiene = "si";
+                    }
+                }
+                if(contiene.equals("no")){
+                    carritoRepuesto.setRepuesto(repuestoAgregado);
+                    carritoRepuesto.setCantidad(1);
+                    carritoRepuestos.add(carritoRepuesto);
+                }
+                
                 listaRepuestos = repuestoDAO.listarRepuestos();
                 
                 sesion.setAttribute("listaRepuestos", listaRepuestos);
@@ -144,16 +158,26 @@ public class ControladorTecnico extends HttpServlet {
                 break;
                 
             case "eliminarRepuestoCarrito":
+                carritoRepuesto = new CarritoRepuesto();
+                contiene = "no";
                 codigoHojaServicio = Integer.parseInt(request.getParameter("codigoHojaServicio"));
                 codigoRepuesto = Integer.parseInt(request.getParameter("codigoRepuesto"));
                 Repuesto repuestoEliminado = repuestoDAO.obtenerRepuesto(codigoRepuesto);
-                for(Repuesto i : carritoRepuestos){
-                    if(i.getCodigoRepuesto() == repuestoEliminado.getCodigoRepuesto()){
-                        repuestoEliminado = i;
+                for(CarritoRepuesto repuesto : carritoRepuestos){
+                    if(repuesto.getRepuesto().getCodigoRepuesto() == repuestoEliminado.getCodigoRepuesto()){
+                        if(repuesto.getCantidad()==1){
+                            carritoRepuesto = repuesto;
+                        }else if(repuesto.getCantidad()>= 2){
+                            int cantidad = repuesto.getCantidad();
+                            double precio = repuesto.getRepuesto().getPrecioRepuesto();
+                            precio = precio - repuestoEliminado.getPrecioRepuesto();
+                            cantidad--;
+                            repuesto.setCantidad(cantidad);
+                            repuesto.getRepuesto().setPrecioRepuesto(precio);
+                        }
                     }
                 }
-                
-                carritoRepuestos.remove(repuestoEliminado);
+                carritoRepuestos.remove(carritoRepuesto);
                 listaRepuestos = repuestoDAO.listarRepuestos();
                 
                 sesion.setAttribute("codigoHojaServicio", codigoHojaServicio);
@@ -175,8 +199,8 @@ public class ControladorTecnico extends HttpServlet {
                 double precioServicios = 0;
                 HojaServicio hojaServicio = hojaservicioDAO.obtenerHojaServicio(codigoHojaServicio);
                 
-                for(Repuesto i : carritoRepuestos){
-                    precioRepuestos = precioRepuestos + i.getPrecioRepuesto();
+                for(CarritoRepuesto i : carritoRepuestos){
+                    precioRepuestos = precioRepuestos + i.getRepuesto().getPrecioRepuesto();
                 }
                 for(Servicio i: carritoServicios){
                     precioServicios = precioServicios + i.getPrecioServicio();

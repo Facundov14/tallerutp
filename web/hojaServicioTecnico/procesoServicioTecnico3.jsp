@@ -93,7 +93,8 @@
                                     <th scope="col">Codigo</th>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Descripcion</th>
-                                    <th scope="col">Precio</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Subtotal</th>
                                     
 
                                 </tr>
@@ -101,10 +102,11 @@
                             <tbody>
                                 <c:forEach var="repuesto" items="${carritoRepuestos}">
                                     <tr>
-                                        <td>${repuesto.getCodigoRepuesto() }</td>
-                                        <td>${repuesto.getNombreRepuesto() }</td>
-                                        <td>${repuesto.getDescripcionRepuesto() }</td>
-                                        <td>${repuesto.getPrecioRepuesto() }</td>
+                                        <td>${repuesto.getRepuesto().getCodigoRepuesto() }</td>
+                                        <td>${repuesto.getRepuesto().getNombreRepuesto() }</td>
+                                        <td>${repuesto.getRepuesto().getDescripcionRepuesto() }</td>
+                                        <td>${repuesto.getCantidad() }</td>
+                                        <td>${repuesto.getRepuesto().getPrecioRepuesto() }</td>
                                         
                                     </tr>
                                 </c:forEach>
