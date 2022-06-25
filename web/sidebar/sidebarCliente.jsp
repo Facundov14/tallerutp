@@ -47,9 +47,7 @@
                 <button class="cerrar-sesion">Cerrar Sesion</button>
             </a>
         </div>
-        <div class="principal">
-            texto
-        </div>
+        
     </main>
 </body>
 </html>

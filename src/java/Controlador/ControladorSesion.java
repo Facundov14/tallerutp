@@ -83,6 +83,7 @@ public class ControladorSesion extends HttpServlet {
                 sesion.setAttribute("usuario", usuario);
                 
                 switch(usuario.getTipoUsuario().getCodigoTipoUsuario()){
+                    
                     case 1:
                         request.getRequestDispatcher("inicioCliente.jsp").forward(request, response);
                         break;
@@ -93,7 +94,9 @@ public class ControladorSesion extends HttpServlet {
                         request.getRequestDispatcher("inicioAdmin.jsp").forward(request, response);
                         break;
                     default:
-                        break;
+                        
+                        request.getRequestDispatcher("loginfail.jsp").forward(request, response);
+                    break;
                 }
                 break;
             case "cerrarSesion":
